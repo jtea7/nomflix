@@ -1,7 +1,7 @@
 import React from 'react';
-// a태그 대신 Link 사용시 해당 페이지가 내 어플리케이션에 있으면
-// 브라우져한 방식으로 가지않고 JS의 방식으로 이동하게 함
-import { Link } from 'react-router-dom';
+// Link : a태그 대신 Link 사용시 해당 페이지가 내 어플리케이션에 있으면 브라우져한 방식으로 가지않고 JS의 방식으로 이동하게 함
+// withRouter : 다른 컴포넌트를 감싸는 컴포넌트 (Router에 대한 정보를 준다.)
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 //* 첫자는 대문자로 시작해야함 (모든 React Component 동일)
@@ -30,6 +30,7 @@ const Item = styled.li`
   height: 50px;
   border-bottom: 5px solid
     ${(props) => (props.current ? '#3498db' : 'transparent')};
+  transition: border-bottom 0.5s ease-in-out;
 `;
 
 const SLink = styled(Link)`
@@ -40,18 +41,19 @@ const SLink = styled(Link)`
 `;
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
-export default () => (
+export default withRouter(({ location: { pathname } }) => (
   <Header>
+    {/* {console.log(props)} */}
     <List>
-      <Item current={true}>
+      <Item current={pathname === '/'}>
         <SLink to="/">Movies</SLink>
       </Item>
-      <Item current={true}>
+      <Item current={pathname === '/tv'}>
         <SLink to="/tv">TV</SLink>
       </Item>
-      <Item current={true}>
+      <Item current={pathname === '/search'}>
         <SLink to="/search">Search</SLink>
       </Item>
     </List>
   </Header>
-);
+));
