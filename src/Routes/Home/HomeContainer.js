@@ -1,3 +1,4 @@
+import { moviesApi } from 'api';
 import React from 'react';
 import HomePresenter from './HomePresenter';
 
@@ -11,7 +12,40 @@ export default class extends React.Component {
     loading: true,
   };
 
+  async componentDidMount() {
+    try {
+      const npTask = moviesApi.nowPlaying();
+      const ucTask = moviesApi.upcoming();
+      const ppTask = moviesApi.popular();
+
+      const {
+        data: { results: nowPlaying },
+      } = await npTask;
+      const {
+        data: { results: upcoming },
+      } = await ucTask;
+      const {
+        data: { results: popular },
+      } = await ppTask;
+
+      this.setState({
+        nowPlaying,
+        upcoming,
+        popular,
+      });
+    } catch {
+      this.setState({
+        error: "Can't find movies informaiton.",
+      });
+    } finally {
+      this.setState({
+        loading: false,
+      });
+    }
+  }
+
   render() {
+    //console.log(this.state);
     const { nowPlaying, upcoming, popular, error, loading } = this.state;
     return (
       <HomePresenter
