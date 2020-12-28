@@ -40,6 +40,8 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
+//Route에 정의된 컴포넌트는 props에서 Loaction 정보를 자동으로 받아온다.
+//Header의 경우 Router에 정의되지 않았기 withRouter를 함께 사용해야한다.
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 export default withRouter(({ location: { pathname } }) => (
   <Header>
