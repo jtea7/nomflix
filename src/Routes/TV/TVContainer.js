@@ -15,13 +15,13 @@ export default class extends React.Component {
   async componentDidMount() {
     try {
       const {
-        data: { ressults: topRated },
+        data: { results: topRated },
       } = await tvApi.topRated();
       const {
-        data: { ressults: popular },
+        data: { results: popular },
       } = await tvApi.popular();
       const {
-        data: { ressults: airingToday },
+        data: { results: airingToday },
       } = await tvApi.airingToday();
 
       this.setState({ topRated, popular, airingToday });
@@ -33,7 +33,7 @@ export default class extends React.Component {
   }
 
   render() {
-    //console.log(this.state);
+    console.log(this.state);
     const { topRated, popular, airingToday, error, loading } = this.state;
     return (
       <TVPresenter

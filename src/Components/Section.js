@@ -15,6 +15,9 @@ const Title = styled.span`
 
 const Grid = styled.div`
   margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 125px);
+  grid-gap: 25px;
 `;
 
 //children은 Section태그의 자식태그를 받아온다.
