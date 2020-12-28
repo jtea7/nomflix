@@ -1,2 +1,16 @@
-/* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
-export default () => 'TV';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const TVPresenter = ({ topRated, popular, airingToday, error, loading }) =>
+  'tv';
+
+TVPresenter.propTypes = {
+  topRated: PropTypes.array,
+  popular: PropTypes.array,
+  airingToday: PropTypes.array,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+};
+
+export default TVPresenter;

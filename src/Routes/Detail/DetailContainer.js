@@ -14,7 +14,7 @@ export default class extends React.Component {
       result: null,
       error: null,
       loading: true,
-      isMovie: pathname.include('/movie/'),
+      isMovie: pathname.includes('/movie/'),
     };
   }
 
@@ -52,6 +52,6 @@ export default class extends React.Component {
     //Header의 경우 Router에 정의되지 않았기 withRouter를 함께 사용해야한다.
     console.log(this.props);
     const { result, error, loading } = this.state;
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+    return <DetailPresenter result={result} loading={loading} error={error} />;
   }
 }
