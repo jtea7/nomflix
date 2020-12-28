@@ -12,11 +12,20 @@ export default class extends React.Component {
     loading: false,
   };
 
-  handleSubmit = () => {
+  //Form의 Submit에 연결되어 있어 리액트에서 event를 전달해준다.
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm && searchTerm !== '') {
       this.searchByTerm(searchTerm);
     }
+  };
+
+  updateTerm = (event) => {
+    const {
+      target: { value },
+    } = event;
+    this.setState({ searchTerm: value });
   };
 
   searchByTerm = async () => {
@@ -52,6 +61,7 @@ export default class extends React.Component {
         error={error}
         searchTerm={searchTerm}
         handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
       />
     );
   }
