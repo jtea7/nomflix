@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Poster from './Poster';
 import Season from './Season';
 
 const Grid = styled.div`

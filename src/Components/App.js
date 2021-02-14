@@ -1,4 +1,3 @@
-import globalStyles from './GlobalStyles';
 import Router from 'Components/Router';
 import GlobalStyles from 'Components/GlobalStyles';
 

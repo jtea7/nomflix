@@ -14,14 +14,6 @@ const Image = styled.div`
   transition: opacity 0.2s linear;
 `;
 
-const Rating = styled.span`
-  bottom: 5px;
-  right: 5px;
-  position: absolute;
-  opacity: 0;
-  transition: opacity 0.2s linear;
-`;
-
 const ImageContainer = styled.div`
   margin-bottom: 5px;
   position: relative;

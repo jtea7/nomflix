@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import { Helmet } from 'react-helmet';
 import IMDbLink from 'Components/IMDbLink';
-import VideoPlayer from '../../Components/VideoPlayer';
 import DetailTab from 'Components/DetailTab';
 
 const Container = styled.div`
