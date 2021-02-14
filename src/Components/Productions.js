@@ -18,9 +18,13 @@ const CompName = styled.span`
   font-size: 14px;
 `;
 
+const CounLogo = styled.img`
+  height: 30px;
+  margin-right: 10px;
+`;
+
 const CounName = styled.span`
   font-size: 14px;
-  margin-right: 20px;
 `;
 
 const Title = styled.span`
@@ -52,6 +56,22 @@ const Company = ({ logo, name }) => (
   </CompContainer>
 );
 
+const Country = ({ logo, name }) => (
+  <CompContainer>
+    {logo && (
+      <CounLogo
+        alt=""
+        src={
+          logo
+            ? `https://www.countryflags.io/${logo}/flat/64.png`
+            : '../assets/noPosterSmall.png'
+        }
+      />
+    )}
+    <CounName>{name}</CounName>
+  </CompContainer>
+);
+
 const Container = styled.div`
   margin-left: 20px;
 `;
@@ -67,7 +87,7 @@ const Productions = ({ pcomp, pcoun }) => (
     <Title>Production Countries</Title>
     <Comps>
       {pcoun.map((c) => (
-        <CounName>{c.name}</CounName>
+        <Country name={c.name} logo={c.iso_3166_1} />
       ))}
     </Comps>
   </Container>
