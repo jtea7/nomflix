@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import { Helmet } from 'react-helmet';
+import IMDbLink from 'Components/IMDbLink';
+import VideoPlayer from '../../Components/VideoPlayer';
+import DetailTab from 'Components/DetailTab';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -33,6 +36,15 @@ const Content = styled.div`
   height: 100%;
 `;
 
+const TabContent = styled.div`
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding-top: 20px;
+  padding-bottom: 50px;
+`;
+
 const Cover = styled.div`
   width: 30%;
   height: 100%;
@@ -53,6 +65,8 @@ const Title = styled.h3`
 
 const ItemContainer = styled.div`
   margin: 20px 0;
+  display: flex;
+  align-items: flex-end;
 `;
 
 const Item = styled.span``;
@@ -66,6 +80,7 @@ const Overview = styled.p`
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
+  margin-bottom: 20px;
 `;
 
 const DetailPresenter = ({ result, error, loading }) =>
@@ -116,13 +131,19 @@ const DetailPresenter = ({ result, error, loading }) =>
                     : `${genre.name} / `
                 )}
             </Item>
+            <Divider>•</Divider>
+            {result.imdb_id && <IMDbLink imdb_id={result.imdb_id} />}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
         </Data>
       </Content>
+      <TabContent>
+        <DetailTab result={result} />
+      </TabContent>
     </Container>
   );
 
+//https://www.youtube.com/watch?v=sfM7_JLk-84
 DetailPresenter.propTypes = {
   result: PropTypes.object,
   loading: PropTypes.bool.isRequired,
